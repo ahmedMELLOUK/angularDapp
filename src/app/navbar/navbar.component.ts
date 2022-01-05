@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransferService } from '../service/transfer.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  user:any;
 
-  ngOnInit(): void {
-  }
+  constructor(private transferService:TransferService) { }
+
+  ngOnInit(): void {}
 
   connectWallet(){
+    this.transferService.LoginWithMetaMask() //lgin metamask
+  }
+
+  loadContract(){
     
+    this.transferService.loadContract()
+
+    console.log("__________GETTING BALANCE___________")
+    this.transferService.getCurrentAccountBalance().then(console.log)
 
   }
 
-  loadWeb3(){
 
-  }
+
+
+
+
 
 }
